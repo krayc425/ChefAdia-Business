@@ -16,6 +16,9 @@
 		24C30CB21DF5100B00C0748E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CB11DF5100B00C0748E /* Assets.xcassets */; };
 		24C30CB51DF5100B00C0748E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CB31DF5100B00C0748E /* LaunchScreen.storyboard */; };
 		24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C30CBD1DF510FD00C0748E /* TabBarViewController.m */; };
+		24E2B3E21DF51B1B00F1858E /* DishDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */; };
+		24E2B3E61DF51B2A00F1858E /* DishDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E2B3E51DF51B2A00F1858E /* DishDetailTableViewController.m */; };
+		24E2B3E81DF5392200F1858E /* DishDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E2B3E71DF5392200F1858E /* DishDetailTableViewCell.xib */; };
 		6F74FC1BD7AFCE28475D398F /* libPods-ChefAdia-Business.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5197DC252A0BFCA47B7C2D8 /* libPods-ChefAdia-Business.a */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,11 @@
 		24C30CB61DF5100B00C0748E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C30CBC1DF510FD00C0748E /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		24C30CBD1DF510FD00C0748E /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		24E2B3DF1DF51B1B00F1858E /* DishDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDetailTableViewCell.h; sourceTree = "<group>"; };
+		24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDetailTableViewCell.m; sourceTree = "<group>"; };
+		24E2B3E41DF51B2A00F1858E /* DishDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDetailTableViewController.h; sourceTree = "<group>"; };
+		24E2B3E51DF51B2A00F1858E /* DishDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDetailTableViewController.m; sourceTree = "<group>"; };
+		24E2B3E71DF5392200F1858E /* DishDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DishDetailTableViewCell.xib; sourceTree = "<group>"; };
 		2E173BF2C33A373290A65B9B /* Pods-ChefAdia-Business.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChefAdia-Business.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChefAdia-Business/Pods-ChefAdia-Business.debug.xcconfig"; sourceTree = "<group>"; };
 		E5197DC252A0BFCA47B7C2D8 /* libPods-ChefAdia-Business.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChefAdia-Business.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F2BE4DB0B05389B2AA059F /* Pods-ChefAdia-Business.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChefAdia-Business.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChefAdia-Business/Pods-ChefAdia-Business.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +68,11 @@
 				247A71F51DF51264003F0C63 /* DishTableViewCell.h */,
 				247A71F61DF51264003F0C63 /* DishTableViewCell.m */,
 				247A71F71DF51264003F0C63 /* DishTableViewCell.xib */,
+				24E2B3E41DF51B2A00F1858E /* DishDetailTableViewController.h */,
+				24E2B3E51DF51B2A00F1858E /* DishDetailTableViewController.m */,
+				24E2B3DF1DF51B1B00F1858E /* DishDetailTableViewCell.h */,
+				24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */,
+				24E2B3E71DF5392200F1858E /* DishDetailTableViewCell.xib */,
 			);
 			name = Dish;
 			sourceTree = "<group>";
@@ -188,6 +201,7 @@
 			files = (
 				24C30CB51DF5100B00C0748E /* LaunchScreen.storyboard in Resources */,
 				247A71F91DF51264003F0C63 /* DishTableViewCell.xib in Resources */,
+				24E2B3E81DF5392200F1858E /* DishDetailTableViewCell.xib in Resources */,
 				24C30CB21DF5100B00C0748E /* Assets.xcassets in Resources */,
 				24C30CB01DF5100B00C0748E /* Main.storyboard in Resources */,
 			);
@@ -248,10 +262,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E2B3E61DF51B2A00F1858E /* DishDetailTableViewController.m in Sources */,
 				24C30CAA1DF5100B00C0748E /* AppDelegate.m in Sources */,
 				247A71F81DF51264003F0C63 /* DishTableViewCell.m in Sources */,
 				24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */,
 				24C30CA71DF5100B00C0748E /* main.m in Sources */,
+				24E2B3E21DF51B1B00F1858E /* DishDetailTableViewCell.m in Sources */,
 				247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
