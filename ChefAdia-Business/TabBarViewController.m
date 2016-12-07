@@ -22,19 +22,13 @@
     
     [self.tabBarItem setImageInsets:UIEdgeInsetsMake(10, 0, -10, 0)];
     [[self.tabBar.items objectAtIndex:0] setTitle:@"Order"];
-    [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"TAB_FOOD"]];
-    [[self.tabBar.items objectAtIndex:1] setTitle:@"Disn"];
-    [[self.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"TAB_FIND"]];
-    [[self.tabBar.items objectAtIndex:2] setTitle:@"Client"];
-    [[self.tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"TAB_ME"]];
+//    [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"TAB_FOOD"]];
+    [[self.tabBar.items objectAtIndex:1] setTitle:@"Dish"];
+//    [[self.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"TAB_FIND"]];
+    [[self.tabBar.items objectAtIndex:2] setTitle:@"User"];
+//    [[self.tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"TAB_ME"]];
     // Do any additional setup after loading the view.
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - UITabBarController Delegate
 
@@ -57,7 +51,7 @@
             break;
         case 2:
         {
-            [self.naviItem setTitle:@"Client"];
+            [self.naviItem setTitle:@"User"];
             self.naviItem.rightBarButtonItems = nil;
         }
             break;

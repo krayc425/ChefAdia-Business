@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="UserTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WQ7-6V-XZF">
+                        <rect key="frame" x="5" y="5" width="69.5" height="69.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="WQ7-6V-XZF" secondAttribute="height" multiplier="1:1" id="P9C-rs-1Lx"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX0-wB-xQG">
+                        <rect key="frame" x="79.5" y="25" width="118" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="WQ7-6V-XZF" secondAttribute="bottom" constant="5" id="9cc-2c-DfD"/>
+                    <constraint firstItem="NX0-wB-xQG" firstAttribute="leading" secondItem="WQ7-6V-XZF" secondAttribute="trailing" constant="5" id="9lv-HH-yDs"/>
+                    <constraint firstItem="WQ7-6V-XZF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="JhA-UH-ngn"/>
+                    <constraint firstItem="WQ7-6V-XZF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="WPg-El-F7E"/>
+                    <constraint firstItem="NX0-wB-xQG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ry9-Ru-9xM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarView" destination="WQ7-6V-XZF" id="cPJ-GY-kgU"/>
+                <outlet property="nameLabel" destination="NX0-wB-xQG" id="7K0-vg-cEB"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A71F31DF51258003F0C63 /* DishTableViewController.m */; };
-		247A71F81DF51264003F0C63 /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A71F61DF51264003F0C63 /* DishTableViewCell.m */; };
-		247A71F91DF51264003F0C63 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247A71F71DF51264003F0C63 /* DishTableViewCell.xib */; };
+		248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B92891DF82138007048E9 /* DishTableViewCell.m */; };
+		248B928C1DF82138007048E9 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248B928A1DF82138007048E9 /* DishTableViewCell.xib */; };
 		24C30CA71DF5100B00C0748E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C30CA61DF5100B00C0748E /* main.m */; };
 		24C30CAA1DF5100B00C0748E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C30CA91DF5100B00C0748E /* AppDelegate.m */; };
 		24C30CB01DF5100B00C0748E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CAE1DF5100B00C0748E /* Main.storyboard */; };
 		24C30CB21DF5100B00C0748E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CB11DF5100B00C0748E /* Assets.xcassets */; };
 		24C30CB51DF5100B00C0748E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CB31DF5100B00C0748E /* LaunchScreen.storyboard */; };
 		24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C30CBD1DF510FD00C0748E /* TabBarViewController.m */; };
+		24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF63C21DF8140700802C6F /* UserTableViewController.m */; };
+		24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF63C51DF8141300802C6F /* UserTableViewCell.m */; };
+		24DF63C81DF8141300802C6F /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24DF63C61DF8141300802C6F /* UserTableViewCell.xib */; };
+		24DF63CC1DF817A700802C6F /* UserDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF63CB1DF817A700802C6F /* UserDetailTableViewController.m */; };
 		24E2B3E21DF51B1B00F1858E /* DishDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */; };
 		24E2B3E61DF51B2A00F1858E /* DishDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E2B3E51DF51B2A00F1858E /* DishDetailTableViewController.m */; };
 		24E2B3E81DF5392200F1858E /* DishDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E2B3E71DF5392200F1858E /* DishDetailTableViewCell.xib */; };
@@ -25,9 +29,9 @@
 /* Begin PBXFileReference section */
 		247A71F21DF51258003F0C63 /* DishTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewController.h; sourceTree = "<group>"; };
 		247A71F31DF51258003F0C63 /* DishTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewController.m; sourceTree = "<group>"; };
-		247A71F51DF51264003F0C63 /* DishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DishTableViewCell.h; path = ../DishTableViewCell.h; sourceTree = "<group>"; };
-		247A71F61DF51264003F0C63 /* DishTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DishTableViewCell.m; path = ../DishTableViewCell.m; sourceTree = "<group>"; };
-		247A71F71DF51264003F0C63 /* DishTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DishTableViewCell.xib; path = ../DishTableViewCell.xib; sourceTree = "<group>"; };
+		248B92881DF82138007048E9 /* DishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewCell.h; sourceTree = "<group>"; };
+		248B92891DF82138007048E9 /* DishTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewCell.m; sourceTree = "<group>"; };
+		248B928A1DF82138007048E9 /* DishTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
 		24C30CA21DF5100B00C0748E /* ChefAdia-Business.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChefAdia-Business.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C30CA61DF5100B00C0748E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24C30CA81DF5100B00C0748E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,6 +42,13 @@
 		24C30CB61DF5100B00C0748E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C30CBC1DF510FD00C0748E /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		24C30CBD1DF510FD00C0748E /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		24DF63C11DF8140700802C6F /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewController.h; sourceTree = "<group>"; };
+		24DF63C21DF8140700802C6F /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewController.m; sourceTree = "<group>"; };
+		24DF63C41DF8141300802C6F /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
+		24DF63C51DF8141300802C6F /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
+		24DF63C61DF8141300802C6F /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		24DF63CA1DF817A700802C6F /* UserDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailTableViewController.h; sourceTree = "<group>"; };
+		24DF63CB1DF817A700802C6F /* UserDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailTableViewController.m; sourceTree = "<group>"; };
 		24E2B3DF1DF51B1B00F1858E /* DishDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDetailTableViewCell.h; sourceTree = "<group>"; };
 		24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDetailTableViewCell.m; sourceTree = "<group>"; };
 		24E2B3E41DF51B2A00F1858E /* DishDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDetailTableViewController.h; sourceTree = "<group>"; };
@@ -65,9 +76,9 @@
 			children = (
 				247A71F21DF51258003F0C63 /* DishTableViewController.h */,
 				247A71F31DF51258003F0C63 /* DishTableViewController.m */,
-				247A71F51DF51264003F0C63 /* DishTableViewCell.h */,
-				247A71F61DF51264003F0C63 /* DishTableViewCell.m */,
-				247A71F71DF51264003F0C63 /* DishTableViewCell.xib */,
+				248B92881DF82138007048E9 /* DishTableViewCell.h */,
+				248B92891DF82138007048E9 /* DishTableViewCell.m */,
+				248B928A1DF82138007048E9 /* DishTableViewCell.xib */,
 				24E2B3E41DF51B2A00F1858E /* DishDetailTableViewController.h */,
 				24E2B3E51DF51B2A00F1858E /* DishDetailTableViewController.m */,
 				24E2B3DF1DF51B1B00F1858E /* DishDetailTableViewCell.h */,
@@ -101,6 +112,7 @@
 				24C30CA81DF5100B00C0748E /* AppDelegate.h */,
 				24C30CA91DF5100B00C0748E /* AppDelegate.m */,
 				247A71FA1DF5126C003F0C63 /* Dish */,
+				24DF63C91DF8141600802C6F /* User */,
 				24C30CBC1DF510FD00C0748E /* TabBarViewController.h */,
 				24C30CBD1DF510FD00C0748E /* TabBarViewController.m */,
 				24C30CAE1DF5100B00C0748E /* Main.storyboard */,
@@ -118,6 +130,20 @@
 				24C30CA61DF5100B00C0748E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24DF63C91DF8141600802C6F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				24DF63C11DF8140700802C6F /* UserTableViewController.h */,
+				24DF63C21DF8140700802C6F /* UserTableViewController.m */,
+				24DF63C41DF8141300802C6F /* UserTableViewCell.h */,
+				24DF63C51DF8141300802C6F /* UserTableViewCell.m */,
+				24DF63C61DF8141300802C6F /* UserTableViewCell.xib */,
+				24DF63CA1DF817A700802C6F /* UserDetailTableViewController.h */,
+				24DF63CB1DF817A700802C6F /* UserDetailTableViewController.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		4950189FC5756C41B97CBC45 /* Pods */ = {
@@ -200,10 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				24C30CB51DF5100B00C0748E /* LaunchScreen.storyboard in Resources */,
-				247A71F91DF51264003F0C63 /* DishTableViewCell.xib in Resources */,
 				24E2B3E81DF5392200F1858E /* DishDetailTableViewCell.xib in Resources */,
 				24C30CB21DF5100B00C0748E /* Assets.xcassets in Resources */,
+				24DF63C81DF8141300802C6F /* UserTableViewCell.xib in Resources */,
 				24C30CB01DF5100B00C0748E /* Main.storyboard in Resources */,
+				248B928C1DF82138007048E9 /* DishTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,12 +290,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				24E2B3E61DF51B2A00F1858E /* DishDetailTableViewController.m in Sources */,
+				248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */,
 				24C30CAA1DF5100B00C0748E /* AppDelegate.m in Sources */,
-				247A71F81DF51264003F0C63 /* DishTableViewCell.m in Sources */,
+				24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */,
+				24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */,
 				24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */,
 				24C30CA71DF5100B00C0748E /* main.m in Sources */,
 				24E2B3E21DF51B1B00F1858E /* DishDetailTableViewCell.m in Sources */,
 				247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */,
+				24DF63CC1DF817A700802C6F /* UserDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
