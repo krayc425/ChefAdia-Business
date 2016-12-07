@@ -11,6 +11,8 @@
 #import "DishTableViewCell.h"
 #import "DishDetailTableViewController.h"
 
+#define MENU_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getMenu"
+
 @interface DishTableViewController ()
 
 @end
@@ -36,7 +38,7 @@
                                                          @"text/plain",
                                                          @"text/html",
                                                          nil];
-    [manager GET:@"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/getMenu"
+    [manager GET:MENU_URL
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
@@ -74,7 +76,7 @@
     DishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DishTableViewCell" forIndexPath:indexPath];
     
     [cell.nameLabel setText:[self.typeArr[indexPath.row] valueForKey:@"name"]];
-    [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", (int)[self.typeArr[indexPath.row] valueForKey:@"foodNum"]]];
+    [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", [[self.typeArr[indexPath.row] valueForKey:@"num"] intValue]]];
     
     return cell;
 }
@@ -126,7 +128,7 @@
     DishDetailTableViewController *dishDetailTableViewController = [segue destinationViewController];
     NSIndexPath *path = (NSIndexPath *)sender;
     [dishDetailTableViewController setTitle:[self.typeArr[path.row] objectForKey:@"name"]];
-    [dishDetailTableViewController setID:[[self.typeArr[path.row] objectForKey:@"id"] intValue]];
+    [dishDetailTableViewController setID:[[self.typeArr[path.row] objectForKey:@"menuid"] intValue]];
     [dishDetailTableViewController loadFood];
     
 }

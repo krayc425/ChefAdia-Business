@@ -14,6 +14,8 @@
 
 @property (nonnull, nonatomic) NSMutableArray *foodArr;
 
+@property (nonatomic) int foodNum;
+
 - (void)loadFood;
 
 @end

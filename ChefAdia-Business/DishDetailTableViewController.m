@@ -10,6 +10,8 @@
 #import "DishDetailTableViewCell.h"
 #import "AFNetworking.h"
 
+#define LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getList"
+
 @interface DishDetailTableViewController ()
 
 @end
@@ -41,16 +43,21 @@
                                                          @"text/plain",
                                                          @"text/html",
                                                          nil];
-    [manager GET:@"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/getList"
+    [manager GET:LIST_URL
       parameters:tempDict
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
              NSDictionary *resultDict = (NSDictionary *)responseObject;
              if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
-                 NSArray *resultArr = (NSArray *)[resultDict objectForKey:@"data"];
-                 for(NSDictionary *dict in resultArr){
-                     [weakSelf.foodArr addObject:dict];
+
+                 NSDictionary *subResultDict = (NSDictionary *)[resultDict objectForKey:@"data"];
+                 
+                 _foodNum = [[subResultDict objectForKey:@"num"] intValue];
+                 
+                 for(NSDictionary *Dict in (NSArray *)[subResultDict objectForKey:@"list"]){
+                     [_foodArr addObject:Dict];
                  }
+                 
                  [weakSelf.tableView reloadData];
              }else{
                  NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
@@ -81,10 +88,10 @@
     
     [cell.nameLabel setText:[self.foodArr[indexPath.row] valueForKey:@"name"]];
     [cell.priceLabel setText:[NSString stringWithFormat:@"%.2f", [[self.foodArr[indexPath.row] valueForKey:@"price"]doubleValue]]];
-    [cell.goodLabel setText:[NSString stringWithFormat:@"%d", [[self.foodArr[indexPath.row] valueForKey:@"like"]intValue]]];
-    [cell.badLabel setText:[NSString stringWithFormat:@"%d", [[self.foodArr[indexPath.row] valueForKey:@"dislike"]intValue]]];
+    [cell.goodLabel setText:[NSString stringWithFormat:@"%d", [[self.foodArr[indexPath.row] valueForKey:@"good_num"]intValue]]];
+    [cell.badLabel setText:[NSString stringWithFormat:@"%d", [[self.foodArr[indexPath.row] valueForKey:@"bad_num"]intValue]]];
 
-    NSURL *imageUrl = [NSURL URLWithString:[self.foodArr[indexPath.row] valueForKey:@"picture"]];
+    NSURL *imageUrl = [NSURL URLWithString:[self.foodArr[indexPath.row] valueForKey:@"pic"]];
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
     [cell.picView setImage:image];
     
