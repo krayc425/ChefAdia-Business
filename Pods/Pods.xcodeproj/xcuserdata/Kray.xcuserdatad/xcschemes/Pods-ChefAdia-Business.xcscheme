@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B0D51F1C2C54DD8C896DC390B89D8388'
+               BlueprintIdentifier = 'EBE48EF74C5A00EC8B189FCF91FC3250'
                BlueprintName = 'Pods-ChefAdia-Business'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-ChefAdia-Business.a'>

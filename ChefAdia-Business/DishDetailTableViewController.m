@@ -9,6 +9,7 @@
 #import "DishDetailTableViewController.h"
 #import "DishDetailTableViewCell.h"
 #import "AFNetworking.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getList"
 
@@ -92,8 +93,10 @@
     [cell.badLabel setText:[NSString stringWithFormat:@"%d", [[self.foodArr[indexPath.row] valueForKey:@"bad_num"]intValue]]];
 
     NSURL *imageUrl = [NSURL URLWithString:[self.foodArr[indexPath.row] valueForKey:@"pic"]];
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
-    [cell.picView setImage:image];
+//    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+//    [cell.picView setImage:image];
+    [cell.picView sd_setImageWithURL:imageUrl];
+    
     
     return cell;
 }
