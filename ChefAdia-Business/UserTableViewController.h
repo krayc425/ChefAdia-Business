@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserTableViewController : UITableViewController
+@interface UserTableViewController : UITableViewController <UISearchResultsUpdating>
 
 @property (nonatomic, nonnull) NSMutableArray *userArr;
+
+@property (nonnull, nonatomic) UISearchController *searchController;
+
+@property (nonnull, nonatomic) NSMutableArray *filteredUserArr; // 根据searchController搜索的城市
 
 @end

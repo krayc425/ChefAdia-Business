@@ -25,11 +25,26 @@
     [super viewDidLoad];
     self.userArr = [[NSMutableArray alloc] init];
     [self loadUser];
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = false;
+    [self.searchController.searchBar sizeToFit];
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (self.searchController.active) {
+        self.searchController.active = NO;
+        [self.searchController.searchBar removeFromSuperview];
+    }
 }
 
 - (void)loadUser{
@@ -63,6 +78,17 @@
          }];
 }
 
+#pragma mark - searchController delegate
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    [self.filteredUserArr removeAllObjects];
+    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"SELF['username'] CONTAINS[c] %@", self.searchController.searchBar.text];
+    self.filteredUserArr = [[self.userArr filteredArrayUsingPredicate:searchPredicate] mutableCopy];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -70,7 +96,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.userArr count];
+    if(self.searchController.active){
+        return [self.filteredUserArr count];
+    }else{
+        return [self.userArr count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,9 +109,15 @@
     [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
     UserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTableViewCell" forIndexPath:indexPath];
     
-    [cell.nameLabel setText:[self.userArr[indexPath.row] valueForKey:@"username"]];
-    NSURL *imageUrl = [NSURL URLWithString:[[self.userArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://139.196.179.145/images/"]];
-    [cell.avatarView sd_setImageWithURL:imageUrl];
+    if(!self.searchController.active){
+        [cell.nameLabel setText:[self.userArr[indexPath.row] valueForKey:@"username"]];
+        NSURL *imageUrl = [NSURL URLWithString:[[self.userArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://139.196.179.145/images/"]];
+        [cell.avatarView sd_setImageWithURL:imageUrl];
+    }else{
+        [cell.nameLabel setText:[self.filteredUserArr[indexPath.row] valueForKey:@"username"]];
+        NSURL *imageUrl = [NSURL URLWithString:[[self.filteredUserArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://139.196.179.145/images/"]];
+        [cell.avatarView sd_setImageWithURL:imageUrl];
+    }
 
     return cell;
 }

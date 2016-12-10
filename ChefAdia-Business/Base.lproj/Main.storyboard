@@ -330,9 +330,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="Xsg-vf-KOm">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="mua-A3-Uws" id="yCO-f3-zch"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="80" id="sUU-Q5-fRF" customClass="UserTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sUU-Q5-fRF" id="bMM-ET-fAQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -348,10 +356,20 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Item" id="VQn-Go-60S"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="h32-hv-8lq" id="hKD-Ij-Pud"/>
                         <segue destination="7B6-uy-grV" kind="show" identifier="detailSegue" id="APS-q4-AKV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRT-xt-Guc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="h32-hv-8lq">
+                    <connections>
+                        <outlet property="delegate" destination="mua-A3-Uws" id="ktJ-Re-arL"/>
+                        <outlet property="searchBar" destination="Xsg-vf-KOm" id="P44-It-g1f"/>
+                        <outlet property="searchContentsController" destination="mua-A3-Uws" id="pOY-30-rlz"/>
+                        <outlet property="searchResultsDataSource" destination="mua-A3-Uws" id="Jar-DG-E8T"/>
+                        <outlet property="searchResultsDelegate" destination="mua-A3-Uws" id="ah6-ab-yje"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1364" y="1140"/>
         </scene>
