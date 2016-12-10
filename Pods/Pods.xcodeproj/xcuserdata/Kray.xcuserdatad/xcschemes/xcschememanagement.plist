@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ChefAdia-Business.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +42,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5AB34BCC2A5390C2CD01D674EE1EBAC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95D5F09FC93DA152F744E153290667C6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C123657392D82934B17788EA6754CB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,16 +68,6 @@
 			<true/>
 		</dict>
 		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D144D03F6CDBC75C62026420189F892C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EBE48EF74C5A00EC8B189FCF91FC3250</key>
 		<dict>
 			<key>primary</key>
 			<true/>

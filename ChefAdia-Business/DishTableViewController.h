@@ -12,4 +12,6 @@
 
 @property (nonatomic, nonnull) NSMutableArray *typeArr;
 
+- (void)addAction;
+
 @end

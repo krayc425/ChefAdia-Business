@@ -12,6 +12,7 @@
 #import "DishDetailTableViewController.h"
 
 #define MENU_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getMenu"
+#define DELETE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/deleteType"
 
 @interface DishTableViewController ()
 
@@ -21,16 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.typeArr = [[NSMutableArray alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     [self loadMenu];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)loadMenu{
+    self.typeArr = [[NSMutableArray alloc] init];
+    
     __weak typeof(self) weakSelf = self;
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -42,7 +42,6 @@
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-             NSLog(@"SUCCESS");
              NSDictionary *resultDict = (NSDictionary *)responseObject;
              if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                  NSArray *resultArr = (NSArray *)[resultDict objectForKey:@"data"];
@@ -57,6 +56,10 @@
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              NSLog(@"%@",error);
          }];
+}
+
+- (void)addAction{
+    [self performSegueWithIdentifier:@"addTypeSegue" sender:nil];
 }
 
 #pragma mark - Table view data source
@@ -85,52 +88,73 @@
     [self performSegueWithIdentifier:@"detailSegue" sender:indexPath];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"Sure to delete?"
+                                                                        message:nil
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Delete"
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action){
+                                                             
+                                                             __weak typeof(self) weakSelf = self;
+                                                             
+                                                             NSDictionary *dict = @{
+                                                                                    @"typeid" : [self.typeArr[indexPath.row] valueForKey:@"menuid"],
+                                                                                    };
+                                                             
+                                                             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                                                             manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+                                                                                                                  @"text/plain",
+                                                                                                                  @"text/html",
+                                                                                                                  nil];
+                                                             [manager GET:DELETE_URL
+                                                               parameters:dict
+                                                                 progress:nil
+                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+                                                                      NSDictionary *resultDict = (NSDictionary *)responseObject;
+                                                                      if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
+                                                                          NSLog(@"delete success");
+                                                                          
+                                                                          [weakSelf loadMenu];
+                                                                          
+//                                                                          [weakSelf.tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath]
+//                                                                                                    withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                                          [weakSelf.tableView reloadData];
+                                                                      }else{
+                                                                          NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
+                                                                      }
+                                                                  }
+                                                                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      NSLog(@"%@",error);
+                                                                  }];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+                                                         }];
+        [alertC addAction:cancelAction];
+        [alertC addAction:okAction];
+        [self presentViewController:alertC animated:YES completion:nil];
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    DishDetailTableViewController *dishDetailTableViewController = [segue destinationViewController];
-    NSIndexPath *path = (NSIndexPath *)sender;
-    [dishDetailTableViewController setTitle:[self.typeArr[path.row] objectForKey:@"name"]];
-    [dishDetailTableViewController setID:[[self.typeArr[path.row] objectForKey:@"menuid"] intValue]];
-    [dishDetailTableViewController loadFood];
-    
+    if([segue.identifier isEqualToString:@"detailSegue"]){
+        DishDetailTableViewController *dishDetailTableViewController = [segue destinationViewController];
+        NSIndexPath *path = (NSIndexPath *)sender;
+        [dishDetailTableViewController setName:[self.typeArr[path.row] objectForKey:@"name"]];
+        [dishDetailTableViewController setID:[[self.typeArr[path.row] objectForKey:@"menuid"] intValue]];
+        [dishDetailTableViewController setImgURL:[self.typeArr[path.row] objectForKey:@"pic"]];
+        [dishDetailTableViewController loadFood];
+    }
 }
 
 @end

@@ -20,6 +20,8 @@
     self.delegate = self;
     [self.naviItem setTitle:@"Order"];
     
+    self.dishTableViewController = (DishTableViewController *)self.viewControllers[1];
+    
     [self.tabBarItem setImageInsets:UIEdgeInsetsMake(10, 0, -10, 0)];
     [[self.tabBar.items objectAtIndex:0] setTitle:@"Order"];
 //    [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"TAB_FOOD"]];
@@ -27,7 +29,7 @@
 //    [[self.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"TAB_FIND"]];
     [[self.tabBar.items objectAtIndex:2] setTitle:@"User"];
 //    [[self.tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"TAB_ME"]];
-    // Do any additional setup after loading the view.
+
 }
 
 #pragma mark - UITabBarController Delegate
@@ -44,8 +46,8 @@
         {
             [self.naviItem setTitle:@"Dish"];
             UIBarButtonItem *R1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                target:self
-                                                                                action:nil];
+                                                                                target:self.dishTableViewController
+                                                                                action:@selector(addAction)];
             self.naviItem.rightBarButtonItems = [NSArray arrayWithObjects:R1,nil];
         }
             break;

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class DishTableViewController;
+
 @interface TabBarViewController : UITabBarController <UITabBarControllerDelegate>
 
 @property (nonnull, nonatomic) IBOutlet UINavigationItem *naviItem;
+
+@property (nonnull, nonatomic) DishTableViewController *dishTableViewController;
 
 @end

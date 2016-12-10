@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DishDetailTableViewController : UITableViewController
+@interface DishDetailTableViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonnull, nonatomic) UIImagePickerController* picker_library_;
+
+@property (nonnull, nonatomic) IBOutlet UITextField *nameText;
+@property (nonnull, nonatomic) IBOutlet UIImageView *pictureView;
 
 @property (nonatomic) int ID;
+@property (nonnull, nonatomic) NSString *name;
+@property (nonnull, nonatomic) NSString *imgURL;
 
 @property (nonnull, nonatomic) NSMutableArray *foodArr;
 

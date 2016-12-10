@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241983671DFB9FE60090FC7E /* DishAddTableViewController.m */; };
 		247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A71F31DF51258003F0C63 /* DishTableViewController.m */; };
 		248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B92891DF82138007048E9 /* DishTableViewCell.m */; };
 		248B928C1DF82138007048E9 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248B928A1DF82138007048E9 /* DishTableViewCell.xib */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		241983661DFB9FE60090FC7E /* DishAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishAddTableViewController.h; sourceTree = "<group>"; };
+		241983671DFB9FE60090FC7E /* DishAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishAddTableViewController.m; sourceTree = "<group>"; };
 		247A71F21DF51258003F0C63 /* DishTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewController.h; sourceTree = "<group>"; };
 		247A71F31DF51258003F0C63 /* DishTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewController.m; sourceTree = "<group>"; };
 		248B92881DF82138007048E9 /* DishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewCell.h; sourceTree = "<group>"; };
@@ -71,7 +74,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		247A71FA1DF5126C003F0C63 /* Dish */ = {
+		241983691DFB9FED0090FC7E /* List */ = {
 			isa = PBXGroup;
 			children = (
 				247A71F21DF51258003F0C63 /* DishTableViewController.h */,
@@ -79,11 +82,29 @@
 				248B92881DF82138007048E9 /* DishTableViewCell.h */,
 				248B92891DF82138007048E9 /* DishTableViewCell.m */,
 				248B928A1DF82138007048E9 /* DishTableViewCell.xib */,
+				241983661DFB9FE60090FC7E /* DishAddTableViewController.h */,
+				241983671DFB9FE60090FC7E /* DishAddTableViewController.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		2419836A1DFB9FF30090FC7E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
 				24E2B3E41DF51B2A00F1858E /* DishDetailTableViewController.h */,
 				24E2B3E51DF51B2A00F1858E /* DishDetailTableViewController.m */,
 				24E2B3DF1DF51B1B00F1858E /* DishDetailTableViewCell.h */,
 				24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */,
 				24E2B3E71DF5392200F1858E /* DishDetailTableViewCell.xib */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		247A71FA1DF5126C003F0C63 /* Dish */ = {
+			isa = PBXGroup;
+			children = (
+				241983691DFB9FED0090FC7E /* List */,
+				2419836A1DFB9FF30090FC7E /* Detail */,
 			);
 			name = Dish;
 			sourceTree = "<group>";
@@ -294,6 +315,7 @@
 				24C30CAA1DF5100B00C0748E /* AppDelegate.m in Sources */,
 				24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */,
 				24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */,
+				241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */,
 				24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */,
 				24C30CA71DF5100B00C0748E /* main.m in Sources */,
 				24E2B3E21DF51B1B00F1858E /* DishDetailTableViewCell.m in Sources */,
@@ -364,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -405,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

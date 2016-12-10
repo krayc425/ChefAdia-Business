@@ -33,6 +33,8 @@
 }
 
 - (void)loadUser{
+    self.userArr = [[NSMutableArray alloc] init];
+    
     __weak typeof(self) weakSelf = self;
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
