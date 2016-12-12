@@ -24,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.userArr = [[NSMutableArray alloc] init];
-    [self loadUser];
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -34,9 +33,8 @@
     self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated{
+    [self loadUser];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -61,7 +59,6 @@
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-             NSLog(@"SUCCESS");
              NSDictionary *resultDict = (NSDictionary *)responseObject;
              if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                  NSArray *resultArr = (NSArray *)[resultDict objectForKey:@"data"];

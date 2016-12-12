@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class DishTableViewController;
+@class OrderTableViewController;
+@class UserTableViewController;
 
 @interface TabBarViewController : UITabBarController <UITabBarControllerDelegate>
 
 @property (nonnull, nonatomic) IBOutlet UINavigationItem *naviItem;
 
+@property (nonnull, nonatomic) OrderTableViewController *orderTableViewController;
 @property (nonnull, nonatomic) DishTableViewController *dishTableViewController;
+@property (nonnull, nonatomic) UserTableViewController *userTableViewController;
 
 @end

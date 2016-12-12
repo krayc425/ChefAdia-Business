@@ -20,7 +20,9 @@
     self.delegate = self;
     [self.naviItem setTitle:@"Order"];
     
+    self.orderTableViewController = (OrderTableViewController *)self.viewControllers[0];
     self.dishTableViewController = (DishTableViewController *)self.viewControllers[1];
+    self.userTableViewController = (UserTableViewController *)self.viewControllers[2];
     
     [self.tabBarItem setImageInsets:UIEdgeInsetsMake(10, 0, -10, 0)];
     [[self.tabBar.items objectAtIndex:0] setTitle:@"Order"];
@@ -47,7 +49,7 @@
             [self.naviItem setTitle:@"Dish"];
             UIBarButtonItem *R1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                 target:self.dishTableViewController
-                                                                                action:@selector(addAction)];
+                                                                                action:@selector(addAction:)];
             self.naviItem.rightBarButtonItems = [NSArray arrayWithObjects:R1,nil];
         }
             break;

@@ -58,7 +58,7 @@
          }];
 }
 
-- (void)addAction{
+- (void)addAction:(id)sender{
     [self performSegueWithIdentifier:@"addTypeSegue" sender:nil];
 }
 

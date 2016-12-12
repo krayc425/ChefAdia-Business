@@ -10,14 +10,16 @@
 
 @interface UserDetailTableViewController : UITableViewController
 
-@property (nonatomic) IBOutlet UILabel *idLabel;
-@property (nonatomic) IBOutlet UILabel *nameLabel;
-@property (nonatomic) IBOutlet UILabel *bowlLabel;
-@property (nonatomic) IBOutlet UILabel *ticketLabel;
-@property (nonatomic) IBOutlet UILabel *addressLabel;
-@property (nonatomic) IBOutlet UILabel *phoneLabel;
-@property (nonatomic) IBOutlet UILabel *moneyLabel;
-@property (nonatomic) IBOutlet UIImageView *avatarImg;
+@property (nonnull, nonatomic) IBOutlet UILabel *idLabel;
+@property (nonnull, nonatomic) IBOutlet UILabel *nameLabel;
+@property (nonnull, nonatomic) IBOutlet UILabel *bowlLabel;
+@property (nonnull, nonatomic) IBOutlet UILabel *ticketLabel;
+@property (nonnull, nonatomic) IBOutlet UILabel *addressLabel;
+@property (nonnull, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (nonnull, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (nonnull, nonatomic) IBOutlet UIImageView *avatarImg;
+
+@property (nonnull, nonatomic) IBOutlet UIButton *changeBowlButton;
 
 @property (nonnull, nonatomic) NSDictionary *userInfo;
 

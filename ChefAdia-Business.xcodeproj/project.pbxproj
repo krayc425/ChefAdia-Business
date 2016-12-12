@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240E94891DFE4F6C00379059 /* OrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240E94881DFE4F6C00379059 /* OrderTableViewController.m */; };
+		240E948E1DFE51BC00379059 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 240E948C1DFE51BC00379059 /* OrderTableViewCell.m */; };
+		240E948F1DFE51BC00379059 /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240E948D1DFE51BC00379059 /* OrderTableViewCell.xib */; };
+		240E94931DFE570D00379059 /* OrderDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240E94921DFE570D00379059 /* OrderDetailTableViewController.m */; };
+		240E94971DFE665700379059 /* OrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 240E94951DFE665700379059 /* OrderDetailTableViewCell.m */; };
+		240E94981DFE665700379059 /* OrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240E94961DFE665700379059 /* OrderDetailTableViewCell.xib */; };
 		241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241983671DFB9FE60090FC7E /* DishAddTableViewController.m */; };
 		247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A71F31DF51258003F0C63 /* DishTableViewController.m */; };
 		248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B92891DF82138007048E9 /* DishTableViewCell.m */; };
@@ -28,6 +34,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		240E94871DFE4F6C00379059 /* OrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewController.h; sourceTree = "<group>"; };
+		240E94881DFE4F6C00379059 /* OrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewController.m; sourceTree = "<group>"; };
+		240E948B1DFE51BC00379059 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
+		240E948C1DFE51BC00379059 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		240E948D1DFE51BC00379059 /* OrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
+		240E94911DFE570D00379059 /* OrderDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTableViewController.h; sourceTree = "<group>"; };
+		240E94921DFE570D00379059 /* OrderDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTableViewController.m; sourceTree = "<group>"; };
+		240E94941DFE665700379059 /* OrderDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTableViewCell.h; sourceTree = "<group>"; };
+		240E94951DFE665700379059 /* OrderDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTableViewCell.m; sourceTree = "<group>"; };
+		240E94961DFE665700379059 /* OrderDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailTableViewCell.xib; sourceTree = "<group>"; };
 		241983661DFB9FE60090FC7E /* DishAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishAddTableViewController.h; sourceTree = "<group>"; };
 		241983671DFB9FE60090FC7E /* DishAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishAddTableViewController.m; sourceTree = "<group>"; };
 		247A71F21DF51258003F0C63 /* DishTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewController.h; sourceTree = "<group>"; };
@@ -74,6 +90,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240E948A1DFE510B00379059 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				240E94901DFE56FA00379059 /* List */,
+				240E94991DFE665A00379059 /* Detail */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
+		240E94901DFE56FA00379059 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				240E94871DFE4F6C00379059 /* OrderTableViewController.h */,
+				240E94881DFE4F6C00379059 /* OrderTableViewController.m */,
+				240E948B1DFE51BC00379059 /* OrderTableViewCell.h */,
+				240E948C1DFE51BC00379059 /* OrderTableViewCell.m */,
+				240E948D1DFE51BC00379059 /* OrderTableViewCell.xib */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		240E94991DFE665A00379059 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				240E94911DFE570D00379059 /* OrderDetailTableViewController.h */,
+				240E94921DFE570D00379059 /* OrderDetailTableViewController.m */,
+				240E94941DFE665700379059 /* OrderDetailTableViewCell.h */,
+				240E94951DFE665700379059 /* OrderDetailTableViewCell.m */,
+				240E94961DFE665700379059 /* OrderDetailTableViewCell.xib */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		240E949A1DFE767E00379059 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				24DF63C11DF8140700802C6F /* UserTableViewController.h */,
+				24DF63C21DF8140700802C6F /* UserTableViewController.m */,
+				24DF63C41DF8141300802C6F /* UserTableViewCell.h */,
+				24DF63C51DF8141300802C6F /* UserTableViewCell.m */,
+				24DF63C61DF8141300802C6F /* UserTableViewCell.xib */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		240E949B1DFE768400379059 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				24DF63CA1DF817A700802C6F /* UserDetailTableViewController.h */,
+				24DF63CB1DF817A700802C6F /* UserDetailTableViewController.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		241983691DFB9FED0090FC7E /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,10 +202,11 @@
 			children = (
 				24C30CA81DF5100B00C0748E /* AppDelegate.h */,
 				24C30CA91DF5100B00C0748E /* AppDelegate.m */,
-				247A71FA1DF5126C003F0C63 /* Dish */,
-				24DF63C91DF8141600802C6F /* User */,
 				24C30CBC1DF510FD00C0748E /* TabBarViewController.h */,
 				24C30CBD1DF510FD00C0748E /* TabBarViewController.m */,
+				240E948A1DFE510B00379059 /* Order */,
+				247A71FA1DF5126C003F0C63 /* Dish */,
+				24DF63C91DF8141600802C6F /* User */,
 				24C30CAE1DF5100B00C0748E /* Main.storyboard */,
 				24C30CB11DF5100B00C0748E /* Assets.xcassets */,
 				24C30CB31DF5100B00C0748E /* LaunchScreen.storyboard */,
@@ -156,13 +227,8 @@
 		24DF63C91DF8141600802C6F /* User */ = {
 			isa = PBXGroup;
 			children = (
-				24DF63C11DF8140700802C6F /* UserTableViewController.h */,
-				24DF63C21DF8140700802C6F /* UserTableViewController.m */,
-				24DF63C41DF8141300802C6F /* UserTableViewCell.h */,
-				24DF63C51DF8141300802C6F /* UserTableViewCell.m */,
-				24DF63C61DF8141300802C6F /* UserTableViewCell.xib */,
-				24DF63CA1DF817A700802C6F /* UserDetailTableViewController.h */,
-				24DF63CB1DF817A700802C6F /* UserDetailTableViewController.m */,
+				240E949A1DFE767E00379059 /* List */,
+				240E949B1DFE768400379059 /* Detail */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -251,7 +317,9 @@
 				24C30CB21DF5100B00C0748E /* Assets.xcassets in Resources */,
 				24DF63C81DF8141300802C6F /* UserTableViewCell.xib in Resources */,
 				24C30CB01DF5100B00C0748E /* Main.storyboard in Resources */,
+				240E948F1DFE51BC00379059 /* OrderTableViewCell.xib in Resources */,
 				248B928C1DF82138007048E9 /* DishTableViewCell.xib in Resources */,
+				240E94981DFE665700379059 /* OrderDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,8 +380,12 @@
 			files = (
 				24E2B3E61DF51B2A00F1858E /* DishDetailTableViewController.m in Sources */,
 				248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */,
+				240E948E1DFE51BC00379059 /* OrderTableViewCell.m in Sources */,
 				24C30CAA1DF5100B00C0748E /* AppDelegate.m in Sources */,
+				240E94931DFE570D00379059 /* OrderDetailTableViewController.m in Sources */,
 				24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */,
+				240E94971DFE665700379059 /* OrderDetailTableViewCell.m in Sources */,
+				240E94891DFE4F6C00379059 /* OrderTableViewController.m in Sources */,
 				24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */,
 				241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */,
 				24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */,

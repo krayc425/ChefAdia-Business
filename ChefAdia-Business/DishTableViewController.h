@@ -12,6 +12,6 @@
 
 @property (nonatomic, nonnull) NSMutableArray *typeArr;
 
-- (void)addAction;
+- (void)addAction:(_Nonnull id)sender;
 
 @end
