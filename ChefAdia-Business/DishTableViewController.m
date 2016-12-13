@@ -80,8 +80,6 @@
     [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
     DishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DishTableViewCell" forIndexPath:indexPath];
     
-    NSLog([self.typeArr[indexPath.row] description]);
-    
     [cell.nameLabel setText:[self.typeArr[indexPath.row] valueForKey:@"name"]];
     [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", [[self.typeArr[indexPath.row] valueForKey:@"num"] intValue]]];
     

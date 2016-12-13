@@ -31,6 +31,6 @@
 @property (nonnull, nonatomic) NSURL *imgURL;
 
 @property (nonnull, nonatomic) NSString *foodID;
-@property (nonnull, nonatomic) NSArray *extraArr;
+@property (nonnull, nonatomic) NSMutableArray *extraArr;
 
 @end

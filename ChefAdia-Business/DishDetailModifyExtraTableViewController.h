@@ -10,7 +10,7 @@
 
 @protocol DetailExtraDelegate <NSObject>
 
-- (void)passExtras:(NSArray *_Nonnull)arr;
+- (void)passExtras:(NSMutableArray *_Nonnull)arr;
 
 @end
 
@@ -20,6 +20,6 @@
 
 @property (nonnull, nonatomic) NSMutableArray *foodArr;
 //初始已经被选中的
-@property (nonnull, nonatomic) NSMutableArray *selectExtraArr;
+@property (strong, nonatomic) NSMutableArray *_Nonnull selectExtraArr;
 
 @end

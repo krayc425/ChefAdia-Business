@@ -29,7 +29,7 @@
     UIBarButtonItem *R1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                         target:self
                                                                         action:@selector(addAction:)];
-    self.naviItem.rightBarButtonItems = [NSArray arrayWithObjects:R1,nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:R1,nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -38,7 +38,7 @@
 }
 
 - (void)loadMenuInfo{
-    [self.naviItem setTitle:self.name];
+    [self.navigationItem setTitle:self.name];
     [self.nameText setText:self.name];
     [self.pictureView sd_setImageWithURL:[NSURL URLWithString:_imgURL]];
 }
@@ -87,7 +87,12 @@
 
 - (void)uploadAction{
     
-    if([_nameText.text isEqualToString:@""] || [_pictureView.image isEqual:NULL]){
+    if([_nameText.text isEqualToString:@""]){
+        return;
+    }
+    UIImage *image = [self.pictureView image];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    if(imageData == nil){
         return;
     }
     
@@ -97,8 +102,6 @@
                                                          @"text/plain",
                                                          @"text/html",
                                                          nil];
-    UIImage *image = [self.pictureView image];
-    NSData *imageData = UIImagePNGRepresentation(image);
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [hud setMode:MBProgressHUDModeDeterminateHorizontalBar];
@@ -241,6 +244,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 
         NSURL *imageUrl = [NSURL URLWithString:[self.foodArr[indexPath.row] valueForKey:@"pic"]];
         [cell.picView sd_setImageWithURL:imageUrl];
+        
         return cell;
     }else{
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -336,6 +340,13 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [dishDetailModifyTableViewController setFoodName:[self.foodArr[i] valueForKey:@"name"]];
         [dishDetailModifyTableViewController setPrice:[NSString stringWithFormat:@"%.2f", [[self.foodArr[i] valueForKey:@"price"] doubleValue]]];
         [dishDetailModifyTableViewController setImgURL:[NSURL URLWithString:[self.foodArr[i] valueForKey:@"pic"]]];
+        
+        NSMutableArray *selectIDs = [[NSMutableArray alloc] init];
+        for(NSDictionary *d in [self.foodArr[i] valueForKey:@"extraFood"]){
+            [selectIDs addObject:[d objectForKey:@"foodid"]];
+        }
+        
+        [dishDetailModifyTableViewController setExtraArr:[selectIDs mutableCopy]];
     }
 }
 

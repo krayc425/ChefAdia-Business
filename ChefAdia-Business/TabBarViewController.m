@@ -26,11 +26,11 @@
     
     [self.tabBarItem setImageInsets:UIEdgeInsetsMake(10, 0, -10, 0)];
     [[self.tabBar.items objectAtIndex:0] setTitle:@"Order"];
-//    [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"TAB_FOOD"]];
+    [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"TAB_ORDER"]];
     [[self.tabBar.items objectAtIndex:1] setTitle:@"Dish"];
-//    [[self.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"TAB_FIND"]];
+    [[self.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"TAB_DISH"]];
     [[self.tabBar.items objectAtIndex:2] setTitle:@"User"];
-//    [[self.tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"TAB_ME"]];
+    [[self.tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"TAB_USER"]];
 
 }
 

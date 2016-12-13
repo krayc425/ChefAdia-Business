@@ -84,7 +84,6 @@
     return [self.foodArr count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"DishDetailTableViewCell";
     UINib *nib = [UINib nibWithNibName:@"DishDetailTableViewCell" bundle:nil];

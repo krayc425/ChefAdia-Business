@@ -10,8 +10,6 @@
 
 @interface DishDetailTableViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonnull, nonatomic) IBOutlet UINavigationItem *naviItem;
-
 @property (nonnull, nonatomic) UIImagePickerController* picker_library_;
 
 @property (nonnull, nonatomic) IBOutlet UITextField *nameText;
