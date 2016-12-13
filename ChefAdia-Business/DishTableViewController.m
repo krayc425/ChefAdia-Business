@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -77,6 +79,8 @@
     UINib *nib = [UINib nibWithNibName:@"DishTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
     DishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DishTableViewCell" forIndexPath:indexPath];
+    
+    NSLog([self.typeArr[indexPath.row] description]);
     
     [cell.nameLabel setText:[self.typeArr[indexPath.row] valueForKey:@"name"]];
     [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", [[self.typeArr[indexPath.row] valueForKey:@"num"] intValue]]];
@@ -153,7 +157,6 @@
         [dishDetailTableViewController setName:[self.typeArr[path.row] objectForKey:@"name"]];
         [dishDetailTableViewController setID:[[self.typeArr[path.row] objectForKey:@"menuid"] intValue]];
         [dishDetailTableViewController setImgURL:[self.typeArr[path.row] objectForKey:@"pic"]];
-        [dishDetailTableViewController loadFood];
     }
 }
 

@@ -59,11 +59,20 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
              NSDictionary *resultDict = (NSDictionary *)responseObject;
              if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                  
-                 NSLog(@"add success");
+                 NSLog(@"add type success");
                  
                  [hud hideAnimated:YES];
                  
-                 [self.navigationController popViewControllerAnimated:YES];
+                 UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"Upload Success"
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction *action){
+                                                                      [self.navigationController popViewControllerAnimated:YES];
+                                                                  }];
+                 [alertC addAction:okAction];
+                 [self presentViewController:alertC animated:YES completion:nil];
                  
              }else{
                  NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);

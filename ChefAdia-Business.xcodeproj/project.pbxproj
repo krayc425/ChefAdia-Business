@@ -14,6 +14,7 @@
 		240E94971DFE665700379059 /* OrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 240E94951DFE665700379059 /* OrderDetailTableViewCell.m */; };
 		240E94981DFE665700379059 /* OrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240E94961DFE665700379059 /* OrderDetailTableViewCell.xib */; };
 		241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241983671DFB9FE60090FC7E /* DishAddTableViewController.m */; };
+		2419DB451DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2419DB441DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m */; };
 		247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A71F31DF51258003F0C63 /* DishTableViewController.m */; };
 		248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B92891DF82138007048E9 /* DishTableViewCell.m */; };
 		248B928C1DF82138007048E9 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248B928A1DF82138007048E9 /* DishTableViewCell.xib */; };
@@ -23,6 +24,7 @@
 		24C30CB21DF5100B00C0748E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CB11DF5100B00C0748E /* Assets.xcassets */; };
 		24C30CB51DF5100B00C0748E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C30CB31DF5100B00C0748E /* LaunchScreen.storyboard */; };
 		24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C30CBD1DF510FD00C0748E /* TabBarViewController.m */; };
+		24D6959A1DFEB8DA005DBA6E /* DishDetailModifyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D695991DFEB8DA005DBA6E /* DishDetailModifyTableViewController.m */; };
 		24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF63C21DF8140700802C6F /* UserTableViewController.m */; };
 		24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF63C51DF8141300802C6F /* UserTableViewCell.m */; };
 		24DF63C81DF8141300802C6F /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24DF63C61DF8141300802C6F /* UserTableViewCell.xib */; };
@@ -46,6 +48,8 @@
 		240E94961DFE665700379059 /* OrderDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailTableViewCell.xib; sourceTree = "<group>"; };
 		241983661DFB9FE60090FC7E /* DishAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishAddTableViewController.h; sourceTree = "<group>"; };
 		241983671DFB9FE60090FC7E /* DishAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishAddTableViewController.m; sourceTree = "<group>"; };
+		2419DB431DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDetailModifyExtraTableViewController.h; sourceTree = "<group>"; };
+		2419DB441DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDetailModifyExtraTableViewController.m; sourceTree = "<group>"; };
 		247A71F21DF51258003F0C63 /* DishTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewController.h; sourceTree = "<group>"; };
 		247A71F31DF51258003F0C63 /* DishTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewController.m; sourceTree = "<group>"; };
 		248B92881DF82138007048E9 /* DishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewCell.h; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 		24C30CB61DF5100B00C0748E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C30CBC1DF510FD00C0748E /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		24C30CBD1DF510FD00C0748E /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		24D695981DFEB8DA005DBA6E /* DishDetailModifyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDetailModifyTableViewController.h; sourceTree = "<group>"; };
+		24D695991DFEB8DA005DBA6E /* DishDetailModifyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDetailModifyTableViewController.m; sourceTree = "<group>"; };
 		24DF63C11DF8140700802C6F /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewController.h; sourceTree = "<group>"; };
 		24DF63C21DF8140700802C6F /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewController.m; sourceTree = "<group>"; };
 		24DF63C41DF8141300802C6F /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
@@ -166,8 +172,20 @@
 				24E2B3DF1DF51B1B00F1858E /* DishDetailTableViewCell.h */,
 				24E2B3E01DF51B1B00F1858E /* DishDetailTableViewCell.m */,
 				24E2B3E71DF5392200F1858E /* DishDetailTableViewCell.xib */,
+				2419DB461DFF7D1500597D1F /* Modify */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		2419DB461DFF7D1500597D1F /* Modify */ = {
+			isa = PBXGroup;
+			children = (
+				24D695981DFEB8DA005DBA6E /* DishDetailModifyTableViewController.h */,
+				24D695991DFEB8DA005DBA6E /* DishDetailModifyTableViewController.m */,
+				2419DB431DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.h */,
+				2419DB441DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m */,
+			);
+			name = Modify;
 			sourceTree = "<group>";
 		};
 		247A71FA1DF5126C003F0C63 /* Dish */ = {
@@ -386,9 +404,11 @@
 				24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */,
 				240E94971DFE665700379059 /* OrderDetailTableViewCell.m in Sources */,
 				240E94891DFE4F6C00379059 /* OrderTableViewController.m in Sources */,
+				24D6959A1DFEB8DA005DBA6E /* DishDetailModifyTableViewController.m in Sources */,
 				24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */,
 				241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */,
 				24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */,
+				2419DB451DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m in Sources */,
 				24C30CA71DF5100B00C0748E /* main.m in Sources */,
 				24E2B3E21DF51B1B00F1858E /* DishDetailTableViewCell.m in Sources */,
 				247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */,

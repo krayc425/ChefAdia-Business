@@ -89,7 +89,7 @@
     _dateText.inputView = datePicker;
     
     UIToolbar *toolbar = [[UIToolbar alloc] init];
-    toolbar.barTintColor = [UIColor grayColor];
+    toolbar.barTintColor = [UIColor lightGrayColor];
     toolbar.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 35);
     
     UIBarButtonItem *item0 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
