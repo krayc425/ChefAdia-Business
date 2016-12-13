@@ -30,17 +30,18 @@
                                                                         target:self
                                                                         action:@selector(addAction:)];
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:R1,nil];
+    [self loadMenuInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self loadMenuInfo];
     [self loadFood];
 }
 
 - (void)loadMenuInfo{
-    [self.navigationItem setTitle:self.name];
+    NSLog(@"LMI");
     [self.nameText setText:self.name];
     [self.pictureView sd_setImageWithURL:[NSURL URLWithString:_imgURL]];
+    [self.navigationItem setTitle:self.name];
 }
 
 - (void)loadFood{
@@ -220,6 +221,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.section == 0 && indexPath.row == 1){
         [self modifyPic];
     }else if(indexPath.section == 0 && indexPath.row == 2){
@@ -227,7 +229,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     }else if(indexPath.section == 1){
         [self performSegueWithIdentifier:@"editDishSegue" sender:indexPath];
     }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

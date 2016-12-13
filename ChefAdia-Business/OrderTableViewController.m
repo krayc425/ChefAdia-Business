@@ -171,12 +171,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.section == 0){
         [self showDatePicker];
     }else{
         [self performSegueWithIdentifier:@"detailSegue" sender:indexPath];
     }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Navigation

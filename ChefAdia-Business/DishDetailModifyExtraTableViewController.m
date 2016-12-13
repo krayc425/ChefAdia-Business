@@ -110,6 +110,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *foodid = [self.foodArr[indexPath.row] valueForKey:@"foodid"];
 
     if(![self.selectExtraArr containsObject:foodid]){
@@ -117,8 +118,8 @@
     }else{
         [self.selectExtraArr removeObject:foodid];
     }
+    
     [tableView reloadRowsAtIndexPaths:@[indexPath]withRowAnimation:UITableViewRowAnimationFade];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
