@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DishDetailModifyExtraTableViewController.h"
 
-@interface DishDetailModifyTableViewController : UITableViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, DetailExtraDelegate>
+@interface DishDetailModifyTableViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, DetailExtraDelegate>
 
 @property (nonnull, nonatomic) UIImagePickerController* picker_library_;
 

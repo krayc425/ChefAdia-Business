@@ -10,6 +10,8 @@
 
 @interface OrderDetailTableViewController : UITableViewController
 
+@property (nonatomic) BOOL isCust;
+
 @property (nonnull, nonatomic) NSString *orderID;
 @property (nonnull, nonatomic) IBOutlet UILabel *orderIDLabel;
 @property (nonnull, nonatomic) IBOutlet UILabel *userNameLabel;

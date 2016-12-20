@@ -38,7 +38,6 @@
 }
 
 - (void)loadMenuInfo{
-    NSLog(@"LMI");
     [self.nameText setText:self.name];
     [self.pictureView sd_setImageWithURL:[NSURL URLWithString:_imgURL]];
     [self.navigationItem setTitle:self.name];
@@ -192,6 +191,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 2;
 }
 
@@ -350,6 +350,5 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [dishDetailModifyTableViewController setExtraArr:[selectIDs mutableCopy]];
     }
 }
-
 
 @end

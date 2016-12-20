@@ -16,6 +16,9 @@
 		241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241983671DFB9FE60090FC7E /* DishAddTableViewController.m */; };
 		2419DB451DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2419DB441DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m */; };
 		247A71F41DF51258003F0C63 /* DishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A71F31DF51258003F0C63 /* DishTableViewController.m */; };
+		2489B7841E08C9C000DD185A /* CAMenuData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2489B7831E08C9C000DD185A /* CAMenuData.m */; };
+		2489B7871E08CF6500DD185A /* DishCustDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2489B7861E08CF6500DD185A /* DishCustDetailTableViewController.m */; };
+		2489B78B1E08D9CF00DD185A /* DishCustModifyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2489B78A1E08D9CF00DD185A /* DishCustModifyTableViewController.m */; };
 		248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B92891DF82138007048E9 /* DishTableViewCell.m */; };
 		248B928C1DF82138007048E9 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248B928A1DF82138007048E9 /* DishTableViewCell.xib */; };
 		24C30CA71DF5100B00C0748E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C30CA61DF5100B00C0748E /* main.m */; };
@@ -52,6 +55,12 @@
 		2419DB441DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDetailModifyExtraTableViewController.m; sourceTree = "<group>"; };
 		247A71F21DF51258003F0C63 /* DishTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewController.h; sourceTree = "<group>"; };
 		247A71F31DF51258003F0C63 /* DishTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewController.m; sourceTree = "<group>"; };
+		2489B7821E08C9C000DD185A /* CAMenuData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMenuData.h; sourceTree = "<group>"; };
+		2489B7831E08C9C000DD185A /* CAMenuData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMenuData.m; sourceTree = "<group>"; };
+		2489B7851E08CF6500DD185A /* DishCustDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishCustDetailTableViewController.h; sourceTree = "<group>"; };
+		2489B7861E08CF6500DD185A /* DishCustDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishCustDetailTableViewController.m; sourceTree = "<group>"; };
+		2489B7891E08D9CF00DD185A /* DishCustModifyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishCustModifyTableViewController.h; sourceTree = "<group>"; };
+		2489B78A1E08D9CF00DD185A /* DishCustModifyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishCustModifyTableViewController.m; sourceTree = "<group>"; };
 		248B92881DF82138007048E9 /* DishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewCell.h; sourceTree = "<group>"; };
 		248B92891DF82138007048E9 /* DishTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewCell.m; sourceTree = "<group>"; };
 		248B928A1DF82138007048E9 /* DishTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
@@ -191,10 +200,24 @@
 		247A71FA1DF5126C003F0C63 /* Dish */ = {
 			isa = PBXGroup;
 			children = (
+				2489B7821E08C9C000DD185A /* CAMenuData.h */,
+				2489B7831E08C9C000DD185A /* CAMenuData.m */,
 				241983691DFB9FED0090FC7E /* List */,
 				2419836A1DFB9FF30090FC7E /* Detail */,
+				2489B7881E08D08800DD185A /* Cust */,
 			);
 			name = Dish;
+			sourceTree = "<group>";
+		};
+		2489B7881E08D08800DD185A /* Cust */ = {
+			isa = PBXGroup;
+			children = (
+				2489B7851E08CF6500DD185A /* DishCustDetailTableViewController.h */,
+				2489B7861E08CF6500DD185A /* DishCustDetailTableViewController.m */,
+				2489B7891E08D9CF00DD185A /* DishCustModifyTableViewController.h */,
+				2489B78A1E08D9CF00DD185A /* DishCustModifyTableViewController.m */,
+			);
+			name = Cust;
 			sourceTree = "<group>";
 		};
 		24C30C991DF5100B00C0748E = {
@@ -398,7 +421,9 @@
 			files = (
 				24E2B3E61DF51B2A00F1858E /* DishDetailTableViewController.m in Sources */,
 				248B928B1DF82138007048E9 /* DishTableViewCell.m in Sources */,
+				2489B7871E08CF6500DD185A /* DishCustDetailTableViewController.m in Sources */,
 				240E948E1DFE51BC00379059 /* OrderTableViewCell.m in Sources */,
+				2489B78B1E08D9CF00DD185A /* DishCustModifyTableViewController.m in Sources */,
 				24C30CAA1DF5100B00C0748E /* AppDelegate.m in Sources */,
 				240E94931DFE570D00379059 /* OrderDetailTableViewController.m in Sources */,
 				24DF63C71DF8141300802C6F /* UserTableViewCell.m in Sources */,
@@ -406,6 +431,7 @@
 				240E94891DFE4F6C00379059 /* OrderTableViewController.m in Sources */,
 				24D6959A1DFEB8DA005DBA6E /* DishDetailModifyTableViewController.m in Sources */,
 				24DF63C31DF8140700802C6F /* UserTableViewController.m in Sources */,
+				2489B7841E08C9C000DD185A /* CAMenuData.m in Sources */,
 				241983681DFB9FE60090FC7E /* DishAddTableViewController.m in Sources */,
 				24C30CBE1DF510FD00C0748E /* TabBarViewController.m in Sources */,
 				2419DB451DFF7D1200597D1F /* DishDetailModifyExtraTableViewController.m in Sources */,

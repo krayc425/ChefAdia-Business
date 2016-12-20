@@ -11,6 +11,7 @@
 @interface DishTableViewController : UITableViewController
 
 @property (nonatomic, nonnull) NSMutableArray *typeArr;
+@property (nonatomic, nonnull) NSMutableArray *typeFoodArr;
 
 - (void)addAction:(_Nonnull id)sender;
 

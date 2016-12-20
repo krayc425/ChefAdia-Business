@@ -10,9 +10,12 @@
 #import "AFNetworking.h"
 #import "DishTableViewCell.h"
 #import "DishDetailTableViewController.h"
+#import "DishCustDetailTableViewController.h"
+#import "CAMenuData.h"
 
 #define MENU_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getMenu"
 #define DELETE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/deleteType"
+#define MMENU_FOOD_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/user/getMMenuInfo"
 
 @interface DishTableViewController ()
 
@@ -28,6 +31,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self loadMenu];
+    [self loadMFood];
 }
 
 - (void)loadMenu{
@@ -60,6 +64,39 @@
          }];
 }
 
+
+- (void)loadMFood{
+    self.typeFoodArr = [[NSMutableArray alloc] init];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+                                                         @"text/plain",
+                                                         @"text/html",
+                                                         nil];
+    [manager GET:MMENU_FOOD_URL
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+             NSDictionary *resultDict = (NSDictionary *)responseObject;
+             if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
+                 
+                 NSArray *resultArr = (NSArray *)[resultDict objectForKey:@"data"];
+                 for(NSDictionary *dict in resultArr){
+                     [self.typeFoodArr addObject:dict];
+                 }
+                 
+                 [self.tableView reloadData];
+                 
+             }else{
+                 NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"message"]);
+             }
+             
+         }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"%@",error);
+         }];
+}
+
 - (void)addAction:(id)sender{
     [self performSegueWithIdentifier:@"addTypeSegue" sender:nil];
 }
@@ -67,11 +104,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.typeArr count];
+    switch (section) {
+        case 0:
+            return [self.typeArr count];
+        case 1:
+            return [[CAMenuData getNameList] count];
+        default:
+            return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -80,18 +124,37 @@
     [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
     DishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DishTableViewCell" forIndexPath:indexPath];
     
-    [cell.nameLabel setText:[self.typeArr[indexPath.row] valueForKey:@"name"]];
-    [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", [[self.typeArr[indexPath.row] valueForKey:@"num"] intValue]]];
+    if(indexPath.section == 0){
+        [cell.nameLabel setText:[self.typeArr[indexPath.row] valueForKey:@"name"]];
+        [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", [[self.typeArr[indexPath.row] valueForKey:@"num"] intValue]]];
+    }else{
+        [cell.nameLabel setText:[CAMenuData getNameList][indexPath.row]];
+        int count = 0;
+        for(NSDictionary *d in self.typeFoodArr){
+            if([d[@"type"] intValue] - 1 == indexPath.row){
+                count++;
+            }
+        }
+        [cell.numLabel setText:[NSString stringWithFormat:@"%d selections", count]];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"detailSegue" sender:indexPath];
+    if(indexPath.section == 0){
+        [self performSegueWithIdentifier:@"detailSegue" sender:indexPath];
+    }else{
+        [self performSegueWithIdentifier:@"detailCustSegue" sender:indexPath];
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleDelete;
+    if(indexPath.section == 0){
+        return UITableViewCellEditingStyleDelete;
+    }else{
+        return UITableViewCellEditingStyleNone;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -146,15 +209,39 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return @"  Normal";
+    }else if(section == 1){
+        return @"  Custom";
+    }else{
+        return @"";
+    }
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *path = (NSIndexPath *)sender;
     if([segue.identifier isEqualToString:@"detailSegue"]){
         DishDetailTableViewController *dishDetailTableViewController = [segue destinationViewController];
-        NSIndexPath *path = (NSIndexPath *)sender;
+        
         [dishDetailTableViewController setName:[self.typeArr[path.row] objectForKey:@"name"]];
         [dishDetailTableViewController setID:[[self.typeArr[path.row] objectForKey:@"menuid"] intValue]];
         [dishDetailTableViewController setImgURL:[self.typeArr[path.row] objectForKey:@"pic"]];
+    }else if([segue.identifier isEqualToString:@"detailCustSegue"]){
+        DishCustDetailTableViewController *dishCustDetailTableViewController = [segue destinationViewController];
+        
+        [dishCustDetailTableViewController setID:(int)path.row+1];
+        [dishCustDetailTableViewController setName:[CAMenuData getNameList][path.row]];
+        NSMutableArray *foodArr = [[NSMutableArray alloc] init];
+        for(NSDictionary *d in self.typeFoodArr){
+            if([d[@"type"] intValue] - 1 == path.row){
+                [foodArr addObject:d];
+            }
+        }
+        [dishCustDetailTableViewController setFoodArr:foodArr];
+
     }
 }
 

@@ -9,9 +9,11 @@
 #import "OrderDetailTableViewController.h"
 #import "AFNetworking.h"
 #import "OrderDetailTableViewCell.h"
+#import "CAMenuData.h"
 
 #define ORDER_DETAIL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getOrder"
 #define CHANGE_STATUS_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/setState"
+#define CUST_ORDER_DETAIL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getCustOrder"
 
 @interface OrderDetailTableViewController ()
 
@@ -24,7 +26,11 @@
     
     [self.orderIDLabel setText:self.orderID];
     
-    [self loadOrderDetail];
+    if(self.isCust){
+        [self loadCustOrderDetail];
+    }else{
+        [self loadOrderDetail];
+    }
 }
 
 - (void)loadOrderDetail{
@@ -79,6 +85,63 @@
          }];
 }
 
+- (void)loadCustOrderDetail{
+    
+    self.foodArr = [[NSMutableArray alloc] init];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSDictionary *getDict = @{
+                              @"orderid" : self.orderID,
+                              };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+                                                         @"text/plain",
+                                                         @"text/html",
+                                                         nil];
+    [manager GET:CUST_ORDER_DETAIL_URL
+      parameters:getDict
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+             NSDictionary *resultDict = (NSDictionary *)responseObject;
+             
+             if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
+                 
+                 NSDictionary *subResultDict = (NSDictionary *)[resultDict objectForKey:@"data"];
+                 
+                 NSLog(@"%@", [subResultDict description]);
+                 
+                 [self.timeLabel setText:[subResultDict objectForKey:@"time"]];
+                 [self.addressLabel setText:[subResultDict objectForKey:@"addr"]];
+                 [self.userNameLabel setText:[subResultDict objectForKey:@"username"]];
+                 [self.phoneLabel setText:[subResultDict objectForKey:@"phone"]];
+                 [self.priceLabel setText:[NSString stringWithFormat:@"$%.2f", [[subResultDict objectForKey:@"price"] doubleValue]]];
+                 
+                 if([[subResultDict objectForKey:@"isfinish"] intValue] == 0){
+                     [self.isFinishedLabel setText:@"Not Finished"];
+                     [self.isFinishedLabel setTextColor:[UIColor redColor]];
+                     [self.changeStatusButton setTitle:@"Set Finished" forState:UIControlStateNormal];
+                 }else{
+                     [self.isFinishedLabel setText:@"Finished"];
+                     [self.isFinishedLabel setTextColor:[UIColor greenColor]];
+                     [self.changeStatusButton setTitle:@"Set Not Finished" forState:UIControlStateNormal];
+                 }
+                 
+                 [self.foodArr addObjectsFromArray:(NSArray *)[subResultDict objectForKey:@"custfood_list"]];
+                 
+                 [weakSelf.tableView reloadData];
+                 
+             }else{
+                 NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
+             }
+         }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"%@",error);
+         }];
+
+}
+
 - (IBAction)changeStatusAction:(id)sender{
     
     NSNumber *state;
@@ -103,9 +166,14 @@
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
              NSDictionary *resultDict = (NSDictionary *)responseObject;
+             
              if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                  
-                 [self loadOrderDetail];
+                 if(self.isCust){
+                     [self loadCustOrderDetail];
+                 }else{
+                     [self loadOrderDetail];
+                 }
                  
              }else{
                  NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
@@ -156,7 +224,12 @@
         
         NSDictionary *foodDict = self.foodArr[indexPath.row];
         
-        [cell.nameLabel setText:[foodDict objectForKey:@"name"]];
+        if(!self.isCust){
+            [cell.nameLabel setText:[foodDict objectForKey:@"name"]];
+        }else{
+            int i = [[foodDict objectForKey:@"type"] intValue];
+            [cell.nameLabel setText:[NSString stringWithFormat:@"%@ : %@", [CAMenuData getNameList][i-1] ,[foodDict objectForKey:@"name"]]];
+        }
         [cell.numLabel setText:[NSString stringWithFormat:@"%d", [[foodDict objectForKey:@"num"] intValue]]];
         [cell.priceLabel setText:[NSString stringWithFormat:@"$%.2f", [[foodDict objectForKey:@"price"] doubleValue]]];
         

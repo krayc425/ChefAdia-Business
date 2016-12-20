@@ -12,6 +12,7 @@
 #import "OrderDetailTableViewController.h"
 
 #define ORDER_LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getOrderList"
+#define CUST_ORDER_LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getCustOrderList"
 
 @interface OrderTableViewController ()
 
@@ -35,7 +36,7 @@
 - (void)loadOrder{
     self.orderArr = [[NSMutableArray alloc] init];
     
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
     
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
@@ -62,16 +63,62 @@
              if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                  NSArray *resultArr = (NSArray *)[resultDict objectForKey:@"data"];
                  for(NSDictionary *subResultDict in resultArr){
-                     [self.orderArr addObject:subResultDict];
+                     if([subResultDict[@"iscust"] intValue] == 0){
+                         [self.orderArr addObject:subResultDict];
+                     }
                  }
-                 [weakSelf.tableView reloadData];
+                 
+                 [self loadCustOrder];
+                 
              }else{
-                 NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
+                 NSLog(@"Order Error, MSG: %@", [resultDict objectForKey:@"msg"]);
              }
          }
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              NSLog(@"%@",error);
          }];
+}
+
+- (void)loadCustOrder{
+    self.custOrderArr = [[NSMutableArray alloc] init];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    
+//    fmt.dateFormat = @"yyyyMMdd";
+    
+    NSDictionary *getDict = @{
+                              @"date" : [fmt stringFromDate:self.selectDate],
+                              };
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+                                                         @"text/plain",
+                                                         @"text/html",
+                                                         nil];
+    [manager GET:CUST_ORDER_LIST_URL
+      parameters:getDict
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+             NSDictionary *resultDict = (NSDictionary *)responseObject;
+             if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
+                 NSArray *resultArr = (NSArray *)[resultDict objectForKey:@"data"];
+                 for(NSDictionary *subResultDict in resultArr){
+                     [self.custOrderArr addObject:subResultDict];
+                 }
+                 
+                 [weakSelf.tableView reloadData];
+             }else{
+                 NSLog(@"Cust Order Error, MSG: %@", [resultDict objectForKey:@"msg"]);
+             }
+         }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"%@",error);
+         }];
+
 }
 
 - (void)showDatePicker{
@@ -114,23 +161,25 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 1:
             return [self.orderArr count];
+        case 2:
+            return [self.custOrderArr count];
         default:
             return 1;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1) {
-        return 10;
-    }else{
+    if (indexPath.section == 0) {
         return [super tableView:tableView indentationLevelForRowAtIndexPath:indexPath];
+    }else{
+        return 10;
     }
 }
 
@@ -143,13 +192,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 1){
+    if(indexPath.section == 1 || indexPath.section == 2){
         static NSString *CellIdentifier = @"OrderTableViewCell";
         UINib *nib = [UINib nibWithNibName:@"OrderTableViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
         OrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderTableViewCell" forIndexPath:indexPath];
         
-        NSDictionary *orderDict = self.orderArr[indexPath.row];
+        NSDictionary *orderDict;
+        if(indexPath.section == 1){
+            orderDict = self.orderArr[indexPath.row];
+        }else if(indexPath.section == 2){
+            orderDict = self.custOrderArr[indexPath.row];
+        }
         
         [cell.userNameLabel setText:[NSString stringWithFormat:@"User : %@", [orderDict objectForKey:@"username"]]];
         [cell.timeLabel setText:[orderDict objectForKey:@"time"]];
@@ -163,7 +217,6 @@
             [cell.isFinishedLabel setText:@"Finished"];
             [cell.isFinishedLabel setTextColor:[UIColor greenColor]];
         }
-        
         return cell;
     }else{
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -185,8 +238,15 @@
     OrderDetailTableViewController *orderDetailTableViewController = (OrderDetailTableViewController *)[segue destinationViewController];
     
     NSIndexPath *path = (NSIndexPath *)sender;
-    
-    [orderDetailTableViewController setOrderID:[self.orderArr[path.row] objectForKey:@"orderid"]];
+    if(path.section == 1){
+        [orderDetailTableViewController setIsCust:NO];
+        
+        [orderDetailTableViewController setOrderID:[self.orderArr[path.row] objectForKey:@"orderid"]];
+    }else if(path.section == 2){
+        [orderDetailTableViewController setIsCust:YES];
+        
+        [orderDetailTableViewController setOrderID:[self.custOrderArr[path.row] objectForKey:@"orderid"]];
+    }
 }
 
 @end

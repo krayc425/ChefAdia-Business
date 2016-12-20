@@ -1,52 +1,41 @@
-
 //
-//  DishDetailAddTableViewController.m
+//  DishCustModifyTableViewController.m
 //  ChefAdia-Business
 //
-//  Created by 宋 奎熹 on 2016/12/12.
+//  Created by 宋 奎熹 on 2016/12/20.
 //  Copyright © 2016年 宋 奎熹. All rights reserved.
 //
 
-#import "DishDetailModifyTableViewController.h"
+#import "DishCustModifyTableViewController.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-#define UPLOAD_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/addFood"
-#define MODIFY_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/modFood"
-#define UPLOAD_IMAGE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/uploadFoodPic"
+#define UPLOAD_CUST_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/addMMenu"
+#define MODIFY_CUST_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/modMMenu"
+#define UPLOAD_CUST_IMAGE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/uploadCustFoodPic"
 
-@interface DishDetailModifyTableViewController ()
+@interface DishCustModifyTableViewController ()
 
 @end
 
-@implementation DishDetailModifyTableViewController
+@implementation DishCustModifyTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if(!_isEdit){
-        self.extraArr = [[NSMutableArray alloc] init];
-    }
-    
     [self.typeIDLabel setText:self.typeName];
+    
     [self.nameText setText:self.foodName];
-    [self.priceText setText:self.price];
-    
+    [self.priceText setText:[NSString stringWithFormat:@"%.2f", self.price]];
     [self.pictureView sd_setImageWithURL:self.imgURL];
-    
-    if([self.extraArr count] == 0){
-        [self.extraNumLabel setText:@""];
-    }else{
-        [self.extraNumLabel setText:[NSString stringWithFormat:@"%lu item%@", [self.extraArr count], [self.extraArr count] > 1 ? @"s" : @""]];
-    }
 }
 
 - (void)addAction{
+    NSLog(@"add cust");
     if([_nameText.text isEqualToString:@""]
        || [_pictureView.image isEqual:NULL]
        || [_priceText.text isEqualToString:@""]
-       || [_descriptionText.text isEqualToString:@""]
        ){
         NSLog(@"NOT COMPLETE");
         return;
@@ -59,22 +48,22 @@
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                          @"text/plain",
                                                          @"text/html",
                                                          nil];
     
     NSDictionary *tempDict = @{
-                               @"typeid" : self.typeID,
+                               @"type" : [NSNumber numberWithInt:self.type],
                                @"name" : self.nameText.text,
                                @"price" : [NSNumber numberWithDouble:[[self.priceText text] doubleValue]],
-                               @"description" : self.descriptionText.text,
-                               @"extra" : self.extraArr,
                                };
     
-    [manager POST:UPLOAD_DISH_URL
+    NSLog(@"%@", [tempDict description]);
+    
+    [manager POST:UPLOAD_CUST_DISH_URL
        parameters:tempDict
          progress:^(NSProgress * _Nonnull uploadProgress) {
              
@@ -83,9 +72,10 @@
               NSDictionary *resultDict = (NSDictionary *)responseObject;
               if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                   
+                  NSLog(@"%@", [[resultDict objectForKey:@"data"] description]);
                   [self uploadPic:[NSString stringWithFormat:@"%d", [[resultDict objectForKey:@"data"] intValue]]];
                   
-                  NSLog(@"add dish success");
+                  NSLog(@"add cust dish success");
                   
               }else{
                   NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
@@ -94,13 +84,13 @@
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               NSLog(@"%@",error);
           }];
+    
 }
 
 - (void)editAction{
     if([_nameText.text isEqualToString:@""]
        || [_pictureView.image isEqual:NULL]
        || [_priceText.text isEqualToString:@""]
-       || [_descriptionText.text isEqualToString:@""]
        ){
         NSLog(@"NOT COMPLETE");
         return;
@@ -113,28 +103,23 @@
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                          @"text/plain",
                                                          @"text/html",
                                                          nil];
     
-    NSArray *arr = [self.extraArr copy];
-    [self.extraArr removeAllObjects];
-    [self.extraArr addObjectsFromArray:arr];
-    
     NSDictionary *tempDict = @{
-                               @"foodid" : self.foodID,
+                               @"mmenu_foodid" : self.foodID,
+                               @"type" : [NSNumber numberWithInt:self.type],
                                @"name" : self.nameText.text,
                                @"price" : [NSNumber numberWithDouble:[[self.priceText text] doubleValue]],
-                               @"description" : self.descriptionText.text,
-                               @"extra" : self.extraArr,
                                };
     
     NSLog(@"%@", [tempDict description]);
     
-    [manager POST:MODIFY_DISH_URL
+    [manager POST:MODIFY_CUST_DISH_URL
        parameters:tempDict
          progress:^(NSProgress * _Nonnull uploadProgress) {
              
@@ -145,7 +130,7 @@
                   
                   [self uploadPic: self.foodID];
                   
-                  NSLog(@"modify dish success");
+                  NSLog(@"modify cust dish success");
                   
               }else{
                   NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
@@ -182,7 +167,7 @@
                                                          @"application/json",
                                                          nil];
     
-    [manager POST:UPLOAD_IMAGE_URL
+    [manager POST:UPLOAD_CUST_IMAGE_URL
        parameters:dict
      
 constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -195,23 +180,13 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     
     [hud hideAnimated:YES];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     NSLog(@"FAILED");
     NSLog(@"%@", [error description]);
 }];
     
-}
-
-- (void)passExtras:(NSMutableArray *)arr{
-    [self.extraArr removeAllObjects];
-    [self.extraArr addObjectsFromArray:arr];
-    if([self.extraArr count] != 0){
-        [self.extraNumLabel setText:[NSString stringWithFormat:@"%lu item%@", [self.extraArr count], [self.extraArr count] > 1 ? @"s" : @""]];
-    }else{
-        [self.extraNumLabel setText:@""];
-    }
 }
 
 - (void)modifyPic{
@@ -254,24 +229,21 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0){
-        if([_typeIDLabel.text isEqualToString:@"extra"]){
-            return 5;
-        }else{
-            return 6;
-        }
-    }else if(section == 1){
-        return 1;
-    }else{
-        return 0;
+    switch (section) {
+        case 0:
+            return 4;
+        case 1:
+            return 1;
+        default:
+            return 0;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(indexPath.section == 0 && indexPath.row == 4){
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0 && indexPath.row == 3) {
         [self modifyPic];
-    }else if(indexPath.section == 1 && indexPath.row == 0){
+    }else if(indexPath.section == 1){
         if(self.isEdit){
             [self editAction];
         }else{
@@ -286,16 +258,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [self.pictureView setImage:image];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"extraSegue"]){
-        DishDetailModifyExtraTableViewController *dishDetailModifyExtraTableViewController = (DishDetailModifyExtraTableViewController *)[segue destinationViewController];
-        dishDetailModifyExtraTableViewController.extraDelegate = self;
-        [dishDetailModifyExtraTableViewController setSelectExtraArr:[self.extraArr mutableCopy]];
-    }
 }
 
 @end

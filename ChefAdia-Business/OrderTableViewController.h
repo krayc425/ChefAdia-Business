@@ -16,5 +16,6 @@
 @property (nonatomic, nonnull) UITextField *dateText;
 
 @property (nonnull, nonatomic) NSMutableArray *orderArr;
+@property (nonnull, nonatomic) NSMutableArray *custOrderArr;
 
 @end
