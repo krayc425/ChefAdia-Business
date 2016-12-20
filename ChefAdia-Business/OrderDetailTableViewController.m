@@ -12,7 +12,7 @@
 #import "CAMenuData.h"
 
 #define ORDER_DETAIL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getOrder"
-#define CHANGE_STATUS_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/setState"
+#define CHANGE_STATUS_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/setCustState"
 #define CUST_ORDER_DETAIL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getCustOrder"
 
 @interface OrderDetailTableViewController ()
@@ -72,6 +72,12 @@
                      [self.changeStatusButton setTitle:@"Set Not Finished" forState:UIControlStateNormal];
                  }
                  
+                 if([[subResultDict objectForKey:@"type"] intValue] == 0){
+                     [self.typeLabel setText:@"Cash"];
+                 }else if([[subResultDict objectForKey:@"type"] intValue] == 1){
+                     [self.typeLabel setText:@"Visa"];
+                 }
+                 
                  [self.foodArr addObjectsFromArray:(NSArray *)[subResultDict objectForKey:@"food_list"]];
                  
                  [weakSelf.tableView reloadData];
@@ -110,8 +116,6 @@
                  
                  NSDictionary *subResultDict = (NSDictionary *)[resultDict objectForKey:@"data"];
                  
-                 NSLog(@"%@", [subResultDict description]);
-                 
                  [self.timeLabel setText:[subResultDict objectForKey:@"time"]];
                  [self.addressLabel setText:[subResultDict objectForKey:@"addr"]];
                  [self.userNameLabel setText:[subResultDict objectForKey:@"username"]];
@@ -126,6 +130,12 @@
                      [self.isFinishedLabel setText:@"Finished"];
                      [self.isFinishedLabel setTextColor:[UIColor greenColor]];
                      [self.changeStatusButton setTitle:@"Set Not Finished" forState:UIControlStateNormal];
+                 }
+                 
+                 if([[subResultDict objectForKey:@"type"] intValue] == 0){
+                     [self.typeLabel setText:@"Cash"];
+                 }else if([[subResultDict objectForKey:@"type"] intValue] == 1){
+                     [self.typeLabel setText:@"Visa"];
                  }
                  
                  [self.foodArr addObjectsFromArray:(NSArray *)[subResultDict objectForKey:@"custfood_list"]];

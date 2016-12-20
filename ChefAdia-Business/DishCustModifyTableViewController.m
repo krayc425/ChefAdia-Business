@@ -61,8 +61,6 @@
                                @"price" : [NSNumber numberWithDouble:[[self.priceText text] doubleValue]],
                                };
     
-    NSLog(@"%@", [tempDict description]);
-    
     [manager POST:UPLOAD_CUST_DISH_URL
        parameters:tempDict
          progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -72,7 +70,6 @@
               NSDictionary *resultDict = (NSDictionary *)responseObject;
               if([[resultDict objectForKey:@"condition"] isEqualToString:@"success"]){
                   
-                  NSLog(@"%@", [[resultDict objectForKey:@"data"] description]);
                   [self uploadPic:[NSString stringWithFormat:@"%d", [[resultDict objectForKey:@"data"] intValue]]];
                   
                   NSLog(@"add cust dish success");
@@ -117,8 +114,6 @@
                                @"price" : [NSNumber numberWithDouble:[[self.priceText text] doubleValue]],
                                };
     
-    NSLog(@"%@", [tempDict description]);
-    
     [manager POST:MODIFY_CUST_DISH_URL
        parameters:tempDict
          progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -142,8 +137,7 @@
     
 }
 
-- (void)uploadPic:(NSString *)foodid{
-    UIImage *image = [self.pictureView image];
+- (void)uploadPic:(NSString *)foodid{UIImage *image = [self.pictureView image];
     NSData *imageData = UIImagePNGRepresentation(image);
     
     NSDictionary *dict = @{

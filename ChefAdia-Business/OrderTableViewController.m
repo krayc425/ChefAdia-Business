@@ -217,6 +217,13 @@
             [cell.isFinishedLabel setText:@"Finished"];
             [cell.isFinishedLabel setTextColor:[UIColor greenColor]];
         }
+        
+        if([[orderDict objectForKey:@"type"] intValue] == 0){
+            [cell.typeLabel setText:@"Cash"];
+        }else if([[orderDict objectForKey:@"type"] intValue] == 1){
+            [cell.typeLabel setText:@"Visa"];
+        }
+        
         return cell;
     }else{
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];
