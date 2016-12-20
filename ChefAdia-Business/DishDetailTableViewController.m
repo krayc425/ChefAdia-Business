@@ -238,6 +238,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
         DishDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DishDetailTableViewCell" forIndexPath:indexPath];
         
+        
+        
         [cell.nameLabel setText:[self.foodArr[indexPath.row] valueForKey:@"name"]];
         [cell.priceLabel setText:[NSString stringWithFormat:@"$%.2f", [[self.foodArr[indexPath.row] valueForKey:@"price"]doubleValue]]];
         [cell.goodLabel setText:[NSString stringWithFormat:@"%d", [[self.foodArr[indexPath.row] valueForKey:@"good_num"]intValue]]];
@@ -341,6 +343,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [dishDetailModifyTableViewController setFoodName:[self.foodArr[i] valueForKey:@"name"]];
         [dishDetailModifyTableViewController setPrice:[NSString stringWithFormat:@"%.2f", [[self.foodArr[i] valueForKey:@"price"] doubleValue]]];
         [dishDetailModifyTableViewController setImgURL:[NSURL URLWithString:[self.foodArr[i] valueForKey:@"pic"]]];
+        [dishDetailModifyTableViewController setFoodDescription:[self.foodArr[i] valueForKey:@"description"]];
         
         NSMutableArray *selectIDs = [[NSMutableArray alloc] init];
         for(NSDictionary *d in [self.foodArr[i] valueForKey:@"extraFood"]){

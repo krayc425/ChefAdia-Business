@@ -32,6 +32,7 @@
     [self.typeIDLabel setText:self.typeName];
     [self.nameText setText:self.foodName];
     [self.priceText setText:self.price];
+    [self.descriptionText setText:self.foodDescription];
     
     [self.pictureView sd_setImageWithURL:self.imgURL];
     
@@ -131,8 +132,6 @@
                                @"description" : self.descriptionText.text,
                                @"extra" : self.extraArr,
                                };
-    
-    NSLog(@"%@", [tempDict description]);
     
     [manager POST:MODIFY_DISH_URL
        parameters:tempDict
