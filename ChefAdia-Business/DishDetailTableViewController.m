@@ -14,9 +14,9 @@
 #import "DishDetailModifyTableViewController.h"
 #import "DishDetailModifyExtraTableViewController.h"
 
-#define LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getList"
-#define MODIFY_MENU_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/modType"
-#define DELETE_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/deleteFood"
+#define LIST_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/menu/getList"
+#define MODIFY_MENU_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/modType"
+#define DELETE_DISH_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/deleteFood"
 
 @interface DishDetailTableViewController ()
 
@@ -221,7 +221,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.section == 0 && indexPath.row == 1){
         [self modifyPic];
     }else if(indexPath.section == 0 && indexPath.row == 2){

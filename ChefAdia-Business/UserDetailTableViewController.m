@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-#define CHANGE_BOWL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/setBowl"
+#define CHANGE_BOWL_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/setBowl"
 
 @interface UserDetailTableViewController ()
 
@@ -31,7 +31,7 @@
     
     [self.idLabel setText:[self.userInfo objectForKey:@"userid"]];
     [[self nameLabel] setText:[self.userInfo objectForKey:@"username"]];
-    //NSURL *imageUrl = [NSURL URLWithString:[[self.userInfo valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://139.196.179.145/images/"]];
+    //NSURL *imageUrl = [NSURL URLWithString:[[self.userInfo valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://47.89.194.197:8081/images/"]];
     NSURL *imageUrl = [NSURL URLWithString:[self.userInfo valueForKey:@"avatar"]];
     [self.avatarImg sd_setImageWithURL:imageUrl];
     

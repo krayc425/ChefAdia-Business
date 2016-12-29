@@ -11,8 +11,8 @@
 #import "AFNetworking.h"
 #import "OrderDetailTableViewController.h"
 
-#define ORDER_LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getOrderList"
-#define CUST_ORDER_LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getCustOrderList"
+#define ORDER_LIST_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/getOrderList"
+#define CUST_ORDER_LIST_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/getCustOrderList"
 
 @interface OrderTableViewController ()
 
@@ -231,7 +231,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.section == 0){
         [self showDatePicker];
     }else{

@@ -12,7 +12,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DishCustModifyTableViewController.h"
 
-#define DELETE_CUST_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/delMMenu"
+#define DELETE_CUST_DISH_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/delMMenu"
 
 @interface DishCustDetailTableViewController ()
 
@@ -48,7 +48,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"editCustSegue" sender:indexPath];
 }
 

@@ -11,7 +11,7 @@
 #import "DishDetailTableViewCell.h"
 #import "AFNetworking.h"
 
-#define LIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getList"
+#define LIST_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/menu/getList"
 #define EXTRA_ID @"5"
 
 @interface DishDetailModifyExtraTableViewController ()

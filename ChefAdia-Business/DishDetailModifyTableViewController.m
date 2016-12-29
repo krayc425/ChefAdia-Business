@@ -12,9 +12,9 @@
 #import "MBProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-#define UPLOAD_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/addFood"
-#define MODIFY_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/modFood"
-#define UPLOAD_IMAGE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/uploadFoodPic"
+#define UPLOAD_DISH_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/addFood"
+#define MODIFY_DISH_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/modFood"
+#define UPLOAD_IMAGE_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/uploadFoodPic"
 
 @interface DishDetailModifyTableViewController ()
 
@@ -267,7 +267,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.section == 0 && indexPath.row == 4){
         [self modifyPic];
     }else if(indexPath.section == 1 && indexPath.row == 0){

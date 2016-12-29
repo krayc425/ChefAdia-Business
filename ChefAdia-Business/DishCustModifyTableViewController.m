@@ -11,9 +11,9 @@
 #import "MBProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-#define UPLOAD_CUST_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/addMMenu"
-#define MODIFY_CUST_DISH_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/modMMenu"
-#define UPLOAD_CUST_IMAGE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/uploadCustFoodPic"
+#define UPLOAD_CUST_DISH_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/addMMenu"
+#define MODIFY_CUST_DISH_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/modMMenu"
+#define UPLOAD_CUST_IMAGE_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/uploadCustFoodPic"
 
 @interface DishCustModifyTableViewController ()
 

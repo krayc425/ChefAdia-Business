@@ -11,9 +11,9 @@
 #import "OrderDetailTableViewCell.h"
 #import "CAMenuData.h"
 
-#define ORDER_DETAIL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getOrder"
-#define CHANGE_STATUS_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/setCustState"
-#define CUST_ORDER_DETAIL_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getCustOrder"
+#define ORDER_DETAIL_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/getOrder"
+#define CHANGE_STATUS_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/setCustState"
+#define CUST_ORDER_DETAIL_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/getCustOrder"
 
 @interface OrderDetailTableViewController ()
 

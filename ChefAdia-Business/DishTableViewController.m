@@ -13,9 +13,9 @@
 #import "DishCustDetailTableViewController.h"
 #import "CAMenuData.h"
 
-#define MENU_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/menu/getMenu"
-#define DELETE_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/deleteType"
-#define MMENU_FOOD_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/user/getMMenuInfo"
+#define MENU_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/menu/getMenu"
+#define DELETE_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/deleteType"
+#define MMENU_FOOD_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/user/getMMenuInfo"
 
 @interface DishTableViewController ()
 
@@ -31,7 +31,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self loadMenu];
-    [self loadMFood];
 }
 
 - (void)loadMenu{
@@ -54,7 +53,9 @@
                  for(NSDictionary *dict in resultArr){
                      [weakSelf.typeArr addObject: dict];
                  }
-                 [weakSelf.tableView reloadData];
+                 
+                 [self loadMFood];
+//                 [weakSelf.tableView reloadData];
              }else{
                  NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
              }
@@ -142,6 +143,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.section == 0){
         [self performSegueWithIdentifier:@"detailSegue" sender:indexPath];
     }else{

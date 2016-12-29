@@ -13,7 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UserDetailTableViewController.h"
 
-#define USERLIST_URL @"http://139.196.179.145/ChefAdia-1.0-SNAPSHOT/shop/getUserList"
+#define USERLIST_URL @"http://47.89.194.197:8081/ChefAdia-1.0-SNAPSHOT/shop/getUserList"
 
 @interface UserTableViewController ()
 
@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.userArr = [[NSMutableArray alloc] init];
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -31,10 +30,13 @@
     [self.searchController.searchBar sizeToFit];
     
     self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    [self.tableView setUserInteractionEnabled:NO];
+    
+    [self loadUser];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self loadUser];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -65,6 +67,8 @@
                  for(NSDictionary *dict in resultArr){
                      [weakSelf.userArr addObject: dict];
                  }
+                 
+                 [weakSelf.tableView setUserInteractionEnabled:YES];
                  [weakSelf.tableView reloadData];
              }else{
                  NSLog(@"Error, MSG: %@", [resultDict objectForKey:@"msg"]);
@@ -108,11 +112,11 @@
     
     if(!self.searchController.active){
         [cell.nameLabel setText:[self.userArr[indexPath.row] valueForKey:@"username"]];
-        NSURL *imageUrl = [NSURL URLWithString:[[self.userArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://139.196.179.145/images/"]];
+        NSURL *imageUrl = [NSURL URLWithString:[[self.userArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://47.89.194.197:8081/images/"]];
         [cell.avatarView sd_setImageWithURL:imageUrl];
     }else{
         [cell.nameLabel setText:[self.filteredUserArr[indexPath.row] valueForKey:@"username"]];
-        NSURL *imageUrl = [NSURL URLWithString:[[self.filteredUserArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://139.196.179.145/images/"]];
+        NSURL *imageUrl = [NSURL URLWithString:[[self.filteredUserArr[indexPath.row] valueForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"/data/wwwroot/default/images/" withString:@"http://47.89.194.197:8081/images/"]];
         [cell.avatarView sd_setImageWithURL:imageUrl];
     }
 
@@ -120,6 +124,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"detailSegue" sender:indexPath];
 }
 
